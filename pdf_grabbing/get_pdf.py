@@ -1,0 +1,1 @@
+/home/yara/dlx_vis_content/test_screenshot.py
