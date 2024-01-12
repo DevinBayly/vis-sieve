@@ -3,7 +3,7 @@ First things first, run this docker command
 
 linux `docker run -it --rm -v $PWD:/place --network host continuumio/miniconda3`
 
-mac os `docker run -it --rm -v ${pwd}:/place continuumio/miniconda3`
+mac os `docker run -it --rm -v ${pwd}:/place -p 8080:8080 continuumio/miniconda3`
 
 This makes it possible to run fast api install instructions without messing with your other python programs (outside the container). 
 
