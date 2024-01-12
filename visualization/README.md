@@ -1,9 +1,13 @@
 # Setup instructions
+First things first, run this docker command
+
+`docker run -it --rm -v $PWD:/place --network host continuumio/miniconda3`
+
+This makes it possible to run fast api install instructions without messing with your other python programs (outside the container). 
+
+
 the main fast api instructions are here
 https://fastapi.tiangolo.com/#installation
-
-to be able to run this on your system in a container you might use this command to get a continuumio container for miniconda3
-`docker run -it --rm -v $PWD:/place --network host continuumio/miniconda3`
 
 then inside the container you would install fast api via the instructions above
 `pip install fastapi uvicorn[standard]`
