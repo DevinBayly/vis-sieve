@@ -27,3 +27,8 @@ uvicorn main:app --reload --port 8088
 ```
 
 Then point your browser at `localhost:8088` 
+
+## Exit
+
+On mac os:
+^C then ^D (^ = ctrl)
