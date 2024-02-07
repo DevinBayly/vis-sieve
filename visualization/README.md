@@ -9,8 +9,11 @@ On linux:
 On mac os:
 1. Open Docker app
 2. Open Terminal, navigate to this `vis-seive/visualization` directory
-3. Run `docker run -it --rm -v ${pwd}:/place -p 8080:8080 continuumio/miniconda3`
-
+3. Run Carolina's instructions below
+```
+    created $(pwd)/place directory beforehand
+    and then ran docker run -it --rm --mount type=bind,source="$(pwd)",target=/place -p 8080:8080 continuumio/miniconda3
+```
 This makes it possible to run fast api install instructions without messing with your other python programs (outside the container). 
 
 ## Install FastAPI within docker container
