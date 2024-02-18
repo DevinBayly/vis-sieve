@@ -1,5 +1,8 @@
 # Vis-Seive
 
+
+
+
 This project aims to enable visualization service providers/facilitators to get a sense of the kinds of visualizations that are being produced by their institution as a whole. This provides a range of benefits
 *  Informed Facility Development 
 * Trend tracking
