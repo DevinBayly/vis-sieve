@@ -14,7 +14,29 @@ import argparse
 from tqdm import tqdm
 import math
 
-def results_per_year(year, ror="03m2x1q45", silent=False):
+def remove_duplicate_authors(publications, silent=False):
+    """ Removes duplicate authors from a list of publications
+
+    Args:
+        publications (list): list of publications to remove duplicate authors from
+
+    Returns:
+        list: list of publications with duplicate authors removed
+    """
+    for pub in publications:
+        authors = pub["authorships"]
+        seen_ids = set()
+        new_authors = []
+        for a in authors:
+            if a["author"]["id"] not in seen_ids:
+                new_authors.append(a)
+                seen_ids.add(a["author"]["id"])
+            else: 
+                print(f"Duplicate author in {pub['title']}: {a['author']['display_name']}")
+        pub["authorships"] = new_authors
+    return publications
+
+def results_per_year(year, ror="03m2x1q45", silent=False, filter_duplicate_authors=True):
     """ Gets the publications for a school for a year
 
     Args:
@@ -28,6 +50,8 @@ def results_per_year(year, ror="03m2x1q45", silent=False):
     headers = {"mailto":"baylyd@arizona.edu"}
     res = rq.get(f"https://api.openalex.org/works?filter=publication_year:{year},institutions.ror:{ror}&cursor=*&per-page=200",headers=headers)
     data = res.json()
+    if filter_duplicate_authors:
+        data["results"] = remove_duplicate_authors(data["results"], silent=silent)
     page_count = data["meta"]["count"]/data["meta"]["per_page"]
     all_res.extend(data["results"])
     cursor = data["meta"]["next_cursor"]
@@ -37,6 +61,8 @@ def results_per_year(year, ror="03m2x1q45", silent=False):
     while cursor:
         res = rq.get(f"https://api.openalex.org/works?filter=publication_year:{year},institutions.ror:{ror}&cursor={cursor}&per-page=200")
         data = res.json()
+        if filter_duplicate_authors:
+            data["results"] = remove_duplicate_authors(data["results"], silent=silent)
         all_res.extend(data["results"])
         cursor = data["meta"].get("next_cursor",None)
         query+=1
@@ -74,3 +100,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     get_publications(args.ror, range(int(args.first_year), int(args.last_year)+1), args.output, args.silent)
+    
+
