@@ -1,0 +1,31 @@
+<View style="display: flex">
+    <View style="padding: 0em 1em; background: #f1f1f1; margin-right: 1em; border-radius: 3px; display">
+        <View>
+            <Header value="Is A Visualization?"/>
+            <Choices name="IsVis" toName="image" >
+                <Choice value="true" />
+                <Choice value="false" />
+            </Choices>
+        </View>
+      
+        <View visibleWhen="choice-selected" whenTagName="IsVis">
+            <Header value="Is Complex?"/>
+            <Choices name="IsComplex" toName="image">
+                <Choice value="true" />
+                <Choice value="false" />
+            </Choices>
+
+            <Header value="Type?"/>
+            <Choices name="Type" toName="image">
+                <Choice value="Bar" />
+                <Choice value="Line" />
+                <Choice value="Pie" />
+                <Choice value="Scatter" />
+                <Choice value="Other" />
+            </Choices>
+          
+        </View>
+    </View>
+ 	
+    <Image name="image" value="$image"/>
+</View>
