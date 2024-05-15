@@ -202,7 +202,8 @@ async def add_publication_and_figures(con: db.DuckDBPyConnection, pub: dict, con
     
     if not pdf_grab_result:
         pdf_path = None
-        os.rmdir(pub_folder)
+        # TODO inspect why this breaks the process
+        # os.rmdir(pub_folder)
     
     # Add publication to database
     try:
@@ -252,8 +253,25 @@ async def populate_database(database_file: str, ror: str, years: range, content_
             for pub in tqdm(publications):
 
                 # Add publication to database
-                await add_publication_and_figures(con, pub, content_root, playwright)
+                #await add_publication_and_figures(con, pub, content_root, playwright)
+                # TODO wrap these publication table lines in a function
                 
+                pub_date = pub["publication_date"]
+                pub_id = int(pub["id"].split("W")[-1])
+                pub_title = pub["title"][:200].replace("'", "")
+                pub_doi = pub["doi"]
+                pub_oa_url = pub["open_access"]["oa_url"]
+                pup_oa_status = pub["open_access"]["oa_status"]
+                # this section is checking for whether the table has the paper in it already
+                con.execute(f"SELECT COUNT(1) FROM paper WHERE id = {pub_id};")
+                exists = con.fetchone()[0]
+                
+                if exists:
+                    # want to continue to the next publication and not try to update either paper table, or the authorship tables, because this has already happened
+                    continue
+
+                # want to modify the paper table
+                con.execute(f"""INSERT INTO paper (id, title, doi, publication_date, oa_url,grabbed) VALUES ({pub_id}, '{pub_title}', '{pub_doi}', '{pub_date}', '{pub_oa_url}','false');""")
                 for a in pub["authorships"]:
                     try:
                         con.execute(f"""INSERT INTO author VALUES ({a['author']['id'].split('A')[-1]}, '{a['author']['display_name'].replace("'", "")}');""")
