@@ -38,7 +38,8 @@ CREATE TABLE paper (
     doi VARCHAR(100),
     publication_date DATE,
     oa_url VARCHAR(200),
-    pdf_path VARCHAR(150)
+    pdf_path VARCHAR(150),
+    grabbed BOOL
 );
             
 CREATE TABLE contribution (
