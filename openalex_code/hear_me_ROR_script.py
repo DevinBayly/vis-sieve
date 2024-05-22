@@ -218,7 +218,8 @@ def populate_database(database_file: str, ror: str, years: range, content_root: 
             #    # want to continue to the next publication and not try to update either paper table, or the authorship tables, because this has already happened
             #    continue
 
-                # want to modify the paper table
+            # want to modify the paper table
+            try:
                 con.execute(f"""INSERT INTO paper (id, title, doi, publication_date, oa_url,grabbed) VALUES ({pub_id}, '{pub_title}', '{pub_doi}', '{pub_date}', '{pub_oa_url}','false');""")
                 for a in pub["authorships"]:
                     try:
