@@ -209,17 +209,11 @@ def populate_database(database_file: str, ror: str, years: range, content_root: 
             con.execute(f"SELECT COUNT(1) FROM paper WHERE id = {pub_id};")
             exists = con.fetchone()[0]
             
-            print("overriding the existence check ")
-            input("proceed?")
-            #if exists:
-            #    # want to continue to the next publication and not try to update either paper table, or the authorship tables, because this has already happened
-            #    continue
+            if exists:
+                # want to continue to the next publication and not try to update either paper table, or the authorship tables, because this has already happened
+                continue
 
-            # want to modify the paper table
-            try:
-                con.execute(f"""INSERT INTO paper (id, title, doi, publication_date, oa_url,grabbed) VALUES ({pub_id}, '{pub_title}', '{pub_doi}', '{pub_date}', '{pub_oa_url}','false');""")
-            except db.ConstraintException:
-                pass
+            con.execute(f"""INSERT INTO paper (id, title, doi, publication_date, oa_url,inst_id) VALUES ({pub_id}, '{pub_title}', '{pub_doi}', '{pub_date}', '{pub_oa_url}','{pub_inst_id}');""")
             for a in pub["authorships"]:
                 # TODO make sure filter the authors and only include the people that are actually affiliated with our ROR code 
                 institutions = a["institutions"]
