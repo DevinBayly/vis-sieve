@@ -176,64 +176,8 @@ def add_institution_to_db(con: db.DuckDBPyConnection, institution_ror: str = Non
         pass
 
     return institution_id
-
-
-async def add_publication_and_figures(con: db.DuckDBPyConnection, pub: dict, content_root_path: str, playwright: Playwright) -> None:
-    pub_date = pub["publication_date"]
-    pub_id = int(pub["id"].split("W")[-1])
-    pub_title = pub["title"][:200].replace("'", "")
-    pub_doi = pub["doi"]
-    pub_oa_url = pub["open_access"]["oa_url"]
-    pup_oa_status = pub["open_access"]["oa_status"]
-
-    # Check if publication already exists
-    con.execute(f"SELECT COUNT(1) FROM paper WHERE id = {pub_id};")
-    exists = con.fetchone()[0]
-    if exists:
-        return
-
-    # Grab pdf
-    if pup_oa_status == "closed":
-        pdf_path = None
-        pdf_grab_result = False
-    else:
-        pub_folder = f"{content_root_path}/{pub_id}"
-        os.makedirs(pub_folder, exist_ok=True)
-        pdf_path = f"{pub_folder}/{pub_id}.pdf"
-        pdf_grab_result = await grab_pdf(pub_oa_url, pdf_path, playwright)
     
-    if not pdf_grab_result:
-        pdf_path = None
-        # TODO inspect why this breaks the process
-        # os.rmdir(pub_folder)
-    
-    # Add publication to database
-    try:
-        if pdf_path:
-            con.execute(f"""INSERT INTO paper VALUES ({pub_id}, '{pub_title}', '{pub_doi}', '{pub_date}', '{pub_oa_url}', '{pdf_path}');""")
-        else:
-            con.execute(f"""INSERT INTO paper (id, title, doi, publication_date, oa_url) VALUES ({pub_id}, '{pub_title}', '{pub_doi}', '{pub_date}', '{pub_oa_url}');""")
-    except db.ConstraintException:
-        pass
-
-    # Grab figures and add to database
-    if pdf_grab_result:
-        figures_folder = f"{pub_folder}/figures"
-        os.makedirs(figures_folder, exist_ok=True)
-        strip_figures(pdf_path, figures_folder+"/")
-
-        # Add figures to database
-        for figure in os.listdir(figures_folder):
-            figure_id = abs(int(figure.split(".")[0])) + (pub_id*100)
-            figure_local_path = os.path.relpath(f"{figures_folder}/{figure}", content_root_path)
-            print(figure_local_path)
-            try:
-                con.execute(f"""INSERT INTO figure (id, paper_id, local_path) VALUES ({figure_id}, {pub_id}, '{figure_local_path}');""")
-            except db.ConstraintException:
-                pass
-
-    
-async def populate_database(database_file: str, ror: str, years: range, content_root: str,
+def populate_database(database_file: str, ror: str, years: range, content_root: str,
                       json_output: str = None, silent: bool = False) -> None:
     """ Populates a database with publications for a school for a range of years
 
