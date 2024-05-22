@@ -41,7 +41,7 @@ def remove_duplicate_authors(publications, silent=False):
         pub["authorships"] = new_authors
     return publications
 
-def results_per_year(year, ror="03m2x1q45", silent=False, filter_duplicate_authors=True):
+def results_per_year(year, ror="03m2x1q45", silent=False, filter_duplicate_authors=True, testing=False):
     """ Gets the publications for a school for a year
 
     Args:
@@ -81,6 +81,8 @@ def results_per_year(year, ror="03m2x1q45", silent=False, filter_duplicate_autho
         cursor = data["meta"].get("next_cursor",None)
         if not silent:
             pbar.update(1)
+        if testing:
+            break
     return all_res
 
 def get_publications(ror: str, years: range, output_file: str, silent=False, get_authors=False):
