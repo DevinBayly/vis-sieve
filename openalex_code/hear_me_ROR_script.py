@@ -190,7 +190,6 @@ def populate_database(database_file: str, ror: str, years: range, content_root: 
     """
     con = db.connect(database_file)
     inst_id = add_institution_to_db(con, institution_ror=ror)
-    async with async_playwright() as playwright:
 
     for year in years:
         if not silent:
