@@ -15,9 +15,6 @@ import argparse
 from tqdm import tqdm
 import math
 import duckdb as db
-from grabbers import strip_figures, grab_pdf
-from playwright.async_api import Playwright, async_playwright, expect
-import asyncio
 
 def remove_duplicate_authors(publications, silent=False):
     """ Removes duplicate authors from a list of publications
