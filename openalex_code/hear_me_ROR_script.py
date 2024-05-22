@@ -192,11 +192,12 @@ def populate_database(database_file: str, ror: str, years: range, content_root: 
     inst_id = add_institution_to_db(con, institution_ror=ror)
     async with async_playwright() as playwright:
 
-        for year in years:
-            if not silent:
-                print(f"Getting publications for {year}")
-            publications = results_per_year(year, ror, silent)
-            for pub in tqdm(publications):
+    for year in years:
+        if not silent:
+            print(f"Getting publications for {year}, database version")
+        publications = results_per_year(year, ror, silent,testing=True)
+        print("processing publications")
+        for pub in tqdm(publications):
 
             # Add publication to database
             #await add_publication_and_figures(con, pub, content_root, playwright)
