@@ -39,7 +39,8 @@ CREATE TABLE paper (
     publication_date DATE,
     oa_url VARCHAR(200),
     pdf_path VARCHAR(150),
-    grabbed BOOL
+    inst_id BIGINT,
+    FOREIGN KEY (inst_id) REFERENCES institution(id)
 );
             
 CREATE TABLE contribution (
