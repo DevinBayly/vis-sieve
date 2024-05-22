@@ -198,23 +198,25 @@ def populate_database(database_file: str, ror: str, years: range, content_root: 
             publications = results_per_year(year, ror, silent)
             for pub in tqdm(publications):
 
-                # Add publication to database
-                #await add_publication_and_figures(con, pub, content_root, playwright)
-                # TODO wrap these publication table lines in a function
-                
-                pub_date = pub["publication_date"]
-                pub_id = int(pub["id"].split("W")[-1])
-                pub_title = pub["title"][:200].replace("'", "")
-                pub_doi = pub["doi"]
-                pub_oa_url = pub["open_access"]["oa_url"]
-                pup_oa_status = pub["open_access"]["oa_status"]
-                # this section is checking for whether the table has the paper in it already
-                con.execute(f"SELECT COUNT(1) FROM paper WHERE id = {pub_id};")
-                exists = con.fetchone()[0]
-                
-                if exists:
-                    # want to continue to the next publication and not try to update either paper table, or the authorship tables, because this has already happened
-                    continue
+            # Add publication to database
+            #await add_publication_and_figures(con, pub, content_root, playwright)
+            # TODO wrap these publication table lines in a function
+            
+            pub_date = pub["publication_date"]
+            pub_id = int(pub["id"].split("W")[-1])
+            pub_title = pub["title"][:200].replace("'", "")
+            pub_doi = pub["doi"]
+            pub_oa_url = pub["open_access"]["oa_url"]
+            pub_oa_status = pub["open_access"]["oa_status"]
+            # this section is checking for whether the table has the paper in it already
+            con.execute(f"SELECT COUNT(1) FROM paper WHERE id = {pub_id};")
+            exists = con.fetchone()[0]
+            
+            print("overriding the existence check ")
+            input("proceed?")
+            #if exists:
+            #    # want to continue to the next publication and not try to update either paper table, or the authorship tables, because this has already happened
+            #    continue
 
                 # want to modify the paper table
                 con.execute(f"""INSERT INTO paper (id, title, doi, publication_date, oa_url,grabbed) VALUES ({pub_id}, '{pub_title}', '{pub_doi}', '{pub_date}', '{pub_oa_url}','false');""")
