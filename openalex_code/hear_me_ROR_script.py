@@ -221,7 +221,16 @@ def populate_database(database_file: str, ror: str, years: range, content_root: 
             # want to modify the paper table
             try:
                 con.execute(f"""INSERT INTO paper (id, title, doi, publication_date, oa_url,grabbed) VALUES ({pub_id}, '{pub_title}', '{pub_doi}', '{pub_date}', '{pub_oa_url}','false');""")
-                for a in pub["authorships"]:
+            except db.ConstraintException:
+                pass
+            for a in pub["authorships"]:
+                # TODO make sure filter the authors and only include the people that are actually affiliated with our ROR code 
+                institutions = a["institutions"]
+                # get the rors from the institutions author is affiliated with
+                # use path to trim off only the last part
+                rors = [Path(i["ror"]).stem for i in institutions]
+                # only add the author to the table if we see their affiliation with the university 
+                if ror in rors:
                     try:
                         con.execute(f"""INSERT INTO author VALUES ({a['author']['id'].split('A')[-1]}, '{a['author']['display_name'].replace("'", "")}');""")
                     except db.ConstraintException:
