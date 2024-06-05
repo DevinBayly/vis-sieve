@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Wiki - My Docs</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">My Docs</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Welcome to the VisSieve Project Documentation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Wiki</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Database</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../database/database_information/" class="dropdown-item">Database Information</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../database/database_information/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#wiki" class="nav-link">Wiki</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#links" class="nav-link">Links</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#project-stages" class="nav-link">Project Stages</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#1-url-gathering-stage" class="nav-link">1. URL Gathering Stage</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#2-pdf-grabbing" class="nav-link">2. PDF grabbing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#3-labeling" class="nav-link">3. labeling</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#4-visualization-stage" class="nav-link">4. Visualization Stage</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#observable-framework" class="nav-link">Observable Framework</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#procedures" class="nav-link">Procedures</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#database-information" class="nav-link">Database Information</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#notion-shortcut" class="nav-link">Notion Shortcut</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="wiki">Wiki</h1>
+<p>This space is to provide resources for the project, such as important links, procedures, hints for other tools involved in each project stage, etc.</p>
+<h1 id="links">Links</h1>
+<p>Devin’s https://github.com/DevinBayly/vis-seive/ (MAIN)</p>
+<p>Carolina’s https://github.com/carolinarr/vis-sieve (temporary)</p>
+<p>PDF Storage - <a href="https://data.cyverse.org/dav-anon/iplant/home/baylyd/vis_sieve/">https://data.cyverse.org/dav-anon/iplant/home/baylyd/vis_sieve/</a></p>
+<p><a href="https://docs.openalex.org/">https://docs.openalex.org/</a></p>
+<p>Label Studio - <a href="http://149.165.169.100:8080/">http://149.165.169.100:8080/</a></p>
+<p>CSR account: c.roe email, low sec password</p>
+<h1 id="project-stages">Project Stages</h1>
+<ol>
+<li>url gathering</li>
+<li>pdf retrieval</li>
+<li>(get figs?)</li>
+<li>visualization</li>
+</ol>
+<h1 id="1-url-gathering-stage">1. URL Gathering Stage</h1>
+<p><a href="https://github.com/DevinBayly/vis-seive">https://github.com/DevinBayly/vis-seive</a></p>
+<h1 id="2-pdf-grabbing">2. PDF grabbing</h1>
+<p>Cyverse Datastore link <a href="https://data.cyverse.org/dav-anon/iplant/home/baylyd/vis_sieve/">https://data.cyverse.org/dav-anon/iplant/home/baylyd/vis_sieve/</a></p>
+<p>Example <code>python hear_me_ROR_script.py</code> run:</p>
+<p><code>python hear_me_ROR_script.py 2017 2018 --database ../database/publications.db --content_root ../database/content</code></p>
+<p><code>python hear_me_ROR_script.py --help</code> to see all the options</p>
+<h1 id="3-labeling">3. labeling</h1>
+<p><a href="http://149.165.169.100:8080/user/login/">http://149.165.169.100:8080/user/login/</a></p>
+<p>go ahead adn try to log in to and attempt to label a few things</p>
+<h1 id="4-visualization-stage">4. Visualization Stage</h1>
+<h2 id="observable-framework">Observable Framework</h2>
+<p>more details to come, but <a href="https://observablehq.com/framework/what-is-framework">https://observablehq.com/framework/what-is-framework</a> is a promising start. Note, it’s recommended to setup a code space from the vissieve repo. </p>
+<p><a href="https://devinbayly.observablehq.cloud/hello-duckdb/vissieve-test">https://devinbayly.observablehq.cloud/hello-duckdb/vissieve-test</a></p>
+<h2 id="procedures">Procedures</h2>
+<h3 id="docker-container-reload-setup-instructions">Docker Container + Reload  Setup Instructions</h3>
+<ol>
+<li>Follow "Setup docker container" instructions here: 
+<a href="https://github.com/DevinBayly/vis-sieve/tree/main/visualization">https://github.com/DevinBayly/vis-sieve/tree/main/visualization</a> 
+BUT use this docker command instead:
+<strong>docker run -it --rm --mount type=bind,source="$(pwd)",target=/place -p 8080:8080 ghcr.io/devinbayly/vis_sieve_d3</strong><ol>
+<li>Notes<ol>
+<li>ghcr = github-container-registry</li>
+<li>See devin's repo to view what's installed in container when you open it: <a href="https://github.com/DevinBayly/github-ci/blob/main/vis_sieve_d3">https://github.com/DevinBayly/github-ci/blob/main/vis_sieve_d3</a></li>
+<li><em>If</em> you open with docker command from vis-sieve repo (not updated command mentioned above), then you would run the following commands instead (once docker container opens):<ol>
+<li>apt update</li>
+<li>apt install npm<ol>
+<li>note: takes awhile</li>
+</ol>
+</li>
+<li>npm install -g reload<ol>
+<li>note: -g makes it global, so that any directory we go into we can run this reload command</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Navigate to 'place' folder:
+<strong>cd place</strong></li>
+<li>Run the reload command:
+<strong>reload</strong></li>
+<li>Open browser and input URL:
+<strong>localhost:8080</strong></li>
+<li>Change index.html file, and whenever you save, page should update</li>
+<li>
+<p>To exit:</p>
+<ol>
+<li>I think '<strong>Ctrl + C</strong>' to exit reload?</li>
+<li>I think '<strong>exit</strong>' to exit docker container?</li>
+</ol>
+<h2 id="database-information">Database Information</h2>
+</li>
+</ol>
+<p><a href="../database/database_information/">Database Information</a></p>
+<h1 id="notion-shortcut">Notion Shortcut</h1>
+<p>To indent bulleted list - Tab</p>
+<p>To unindent bulleted list - Shift + Tab</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

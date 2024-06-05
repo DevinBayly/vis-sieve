@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Database Information - My Docs</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">My Docs</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Welcome to the VisSieve Project Documentation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../wiki/" class="nav-link">Wiki</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Database</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Database Information</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../../wiki/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#database-information" class="nav-link">Database Information</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#latest-database-file" class="nav-link">Latest Database File</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#entity-results-diagram" class="nav-link">Entity Results Diagram</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#database-code" class="nav-link">Database Code</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#local-file-structure" class="nav-link">Local File Structure</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#database-subset-and-sql-practice" class="nav-link">Database Subset and SQL Practice</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="database-information">Database Information</h1>
+<h2 id="latest-database-file">Latest Database File</h2>
+<p><a href="publications.db">publications.db</a></p>
+<p>/page</p>
+<h2 id="entity-results-diagram">Entity Results Diagram</h2>
+<p><img alt="Untitled" src="Untitled.png" /></p>
+<ul>
+<li>
+<p><a href="http://draw.io">draw.io</a> file:</p>
+<p><a href="publication_database_er.drawio">publication_database_er.drawio</a></p>
+</li>
+</ul>
+<h2 id="database-code">Database Code</h2>
+<p>The code to create and populate the database is in the GitHub repo.</p>
+<p>Creating:</p>
+<p>https://github.com/DevinBayly/vis-sieve/blob/main/database/create_database.py</p>
+<p>Filling:</p>
+<p>https://github.com/DevinBayly/vis-sieve/blob/main/openalex_code/hear_me_ROR_script.py</p>
+<p>Note that filling the database right now is incredibly slow, I think from stripping PDFs and figures. </p>
+<h1 id="local-file-structure">Local File Structure</h1>
+<ul>
+<li>content<ul>
+<li>[paper id]<ul>
+<li>pdf file (paper_id.pdf)</li>
+<li>figures<ul>
+<li>[figures indexed by integer 00-99] (.png/.jpg/etc.)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Notes:</p>
+<p>Add paper properties, like topics </p>
+<p>Note, rn a paper is connected to an institution only by author. If an author worked at the uofa then went somewhere else, all their works would be counted under both uofa and the other place. Is that an issue? </p>
+<p>affiliation is a author attribute that has some possible time associated with it, <a href="https://docs.openalex.org/api-entities/authors/author-object">https://docs.openalex.org/api-entities/authors/author-object</a>, </p>
+<p>digging into this</p>
+<p><a href="https://api.openalex.org/authors?filter=affiliations.institution.ror:03m2x1q45+00hx57361">https://api.openalex.org/authors?filter=affiliations.institution.ror:03m2x1q45+00hx57361</a> would be someone with both princeton and UA affiliation <a href="https://openalex.org/authors/A5072674162">https://openalex.org/authors/A5072674162</a> for example. This person was at u of  a in 2020 and princeton plasma in 2017</p>
+<p>look at the results with these two queries to see if there’s the overlap we were afraid of</p>
+<p>then we can look for their works in 2020, assumption is that they would also show up in the institutional pass for 2020 from u of arizona. </p>
+<p><a href="https://api.openalex.org/works?filter=publication_year:2020,authorships.author.id:A5072674162,authorships.institutions.ror:03m2x1q45">https://api.openalex.org/works?filter=publication_year:2020,authorships.author.id:A5072674162,authorships.institutions.ror:03m2x1q45</a></p>
+<p>then if we look for works in 2017 we will see the ones from princeton, </p>
+<p><a href="https://api.openalex.org/works?filter=publication_year:2017,authorships.author.id:A5072674162,authorships.institutions.ror:00hx57361">https://api.openalex.org/works?filter=publication_year:2017,authorships.author.id:A5072674162,authorships.institutions.ror:00hx57361</a></p>
+<p>no overlap</p>
+<p><img alt="Untitled" src="Untitled%201.png" /></p>
+<p>or are we talking about a case where an user queries the database for the works of a particular author? problem statement is u of a work counts being correct vs</p>
+<p>suggestion is that we auto populate a field on paper that just borrows the ROR that is provided when the publication by year process is going</p>
+<h2 id="database-subset-and-sql-practice">Database Subset and SQL Practice</h2>
+<p><img alt="Untitled" src="Untitled%202.png" /></p>
+<p>It's not a super big file so I’ll just put it here, note there are no figures yet so no need to worry about file structure.</p>
+<p><a href="publications%201.db">publications.db</a></p>
+<ul>
+<li>
+<p>Code to generate database</p>
+<p>```sql
+CREATE TABLE author (
+    id BIGINT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);</p>
+<p>CREATE TABLE institution (
+    id BIGINT PRIMARY KEY,
+    roi VARCHAR(20) NOT NULL,
+    name VARCHAR(100) NOT NULL
+);</p>
+<p>CREATE TABLE residence (
+    au_id BIGINT,
+    inst_id BIGINT,
+    PRIMARY KEY (au_id, inst_id),
+    FOREIGN KEY (au_id) REFERENCES author(id),
+    FOREIGN KEY (inst_id) REFERENCES institution(id)
+);</p>
+<p>CREATE TABLE paper (
+    id BIGINT PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    doi VARCHAR(100),
+    publication_date DATE
+);</p>
+<p>CREATE TABLE contribution (
+    au_id BIGINT,
+    paper_id BIGINT,
+    PRIMARY KEY (au_id, paper_id),
+    FOREIGN KEY (au_id) REFERENCES author(id),
+    FOREIGN KEY (paper_id) REFERENCES paper(id)
+);</p>
+<p>CREATE TABLE figure (
+    id INTEGER PRIMARY KEY,
+    paper_id BIGINT,
+    local_path VARCHAR(100),
+    server_path VARCHAR(100),
+    FOREIGN KEY (paper_id) REFERENCES paper(id)         <br />
+);</p>
+<p>CREATE TABLE figure_property (
+    name VARCHAR(100),
+    int_value INTEGER,
+    string_value VARCHAR(100),
+    figure_id INTEGER,
+    FOREIGN KEY (figure_id) REFERENCES figure(id),
+    PRIMARY KEY (name, figure_id)
+);
+```</p>
+<p>If you want to use ChatGPT, I’d recommend something along the lines of </p>
+<p>```
+Below is the code to generate an SQL database:
+[All the code above]
+END OF SQL CODE</p>
+<p>Write a query to [find the number of authors]
+```</p>
+<p>But feel free to see what works for you</p>
+</li>
+</ul>
+<p>Some information to note:</p>
+<ul>
+<li>Each block is called a table, each variable is called a column</li>
+<li>Common data types<ul>
+<li>Bigint is an int64 (some openalex ids were bigger than the int32 cap)</li>
+<li>Date is a date that's always formatted like “yyyy-mm-dd”</li>
+<li>Varchar is short for variable (number of) characters and can have between 0 and the number of characters listed</li>
+</ul>
+</li>
+<li>Keys<ul>
+<li>Items in bold are primary keys, meaning every entry must have this property and there cannot be duplicates of it. For example, author has a primary key <strong>id</strong>, meaning every author in the table has an id, and no two authors share an id. For paper, institution, and author, this is the id specified by openalex.<ul>
+<li>Note that a paper, an author, and an institution may have the same id, open alex gets around this by appending an “W” (work), “A”, or “I” before the id.</li>
+<li>If a table has multiple columns in bold, that means those columns form a composite primary key, meaning none of the composite columns can be NULL, and every entry must be a unique combination of the columns. In the example above, each contribution entry must have both an author and a paper, and no two entries can share the same combination of author and paper. (001, 333) and (001, 444) would be okay, (001, 333) and (002, 333) would be okay, but (001, 333) and (001, 333) would not be okay.</li>
+</ul>
+</li>
+<li>Columns that are underlined are called foreign keys, meaning they reference the primary key of another table. For example, contribution.au_id references author.id.</li>
+</ul>
+</li>
+<li>The lines (less important)<ul>
+<li>The lines between each table don't actually represent anything in the database, just concepts. Lines terminating in the double bars represent “only one” while the “|&lt;” means one or more, and “&lt;” means any number. For example, in the above diagram, each author can have one or more contribution, but each contribution can only reference one author.</li>
+</ul>
+</li>
+</ul>
+<h3 id="getting-started-with-duckdb">Getting started with DuckDB</h3>
+<p>Id recommend using it with python so it'll integrate with any other work we do, but that's of course up to you, there's documentation on their website if you wanna do it a different way. It can be installed pretty easily with pip.</p>
+<pre><code class="language-bash">pip install duckdb
+</code></pre>
+<p>Next, in python, you'll want to import it. I don't think there's a common import name but I've just been calling it <code>db</code></p>
+<pre><code class="language-python">import duckdb as db
+</code></pre>
+<p>Then, any time you want to use the database, you'll open it, run the queries followed by fetching, then close it.</p>
+<pre><code class="language-python">con = db.connect('publications.db')
+# Gets the number of papers
+con.execute(&quot;&quot;&quot;
+                        SELECT COUNT(*)
+                        FROM paper
+                        &quot;&quot;&quot;)
+print(con.fetchall())
+
+# Gets all unique institution names
+con.execute(&quot;&quot;&quot;
+                        SELECT DISTINCT name
+                        FROM institution
+                        &quot;&quot;&quot;)
+print(con.fetchall())
+con.close()
+</code></pre>
+<p>Theres a lot of good resources for info on SQL, one I like is <a href="https://www.w3schools.com/sql">https://www.w3schools.com/sql</a></p>
+<h3 id="queries-to-try">Queries to try</h3>
+<p>Here’s a couple of questions to try to answer by querying the database</p>
+<ul>
+<li>
+<p>How many institutions are in the database?</p>
+<p><code>sql
+SELECT COUNT(*)
+FROM institution</code></p>
+</li>
+<li>
+<p>What is the name of the institution with <code>id=20089843</code> ?</p>
+<p><code>sql
+SELECT name
+FROM institution
+WHERE id = 20089843</code></p>
+</li>
+<li>
+<p>What are all the institutions that have “Arizona” in the name? (Hint: use <code>LIKE</code>)</p>
+<p><code>sql
+SELECT name
+FROM institution
+WHERE name LIKE '%Arizona%'</code></p>
+</li>
+<li>
+<p>Who are three authors from “Princeton University”?</p>
+<p><code>sql
+SELECT author.name 
+FROM author
+JOIN residence 
+    ON author.id = residence.au_id
+JOIN institution
+    ON residence.inst_id = institution.id
+WHERE institution.name = 'Princeton University'
+LIMIT 3</code></p>
+<p>Note that indentation and new lines are not important, just the words. You could put that all on one line and it would work.</p>
+</li>
+<li>
+<p>What are the titles of all the papers coauthored by people affiliated with “Princeton University”</p>
+<p><code>sql
+SELECT DISTINCT paper.title
+FROM paper
+JOIN contribution ON paper.id = contribution.paper_id
+JOIN author ON contribution.au_id = author.id
+JOIN residence ON author.id = residence.au_id
+JOIN institution ON residence.inst_id = institution.id
+WHERE institution.name = 'Princeton University'</code></p>
+</li>
+<li>
+<p>How many papers are there that have no authors affiliated with the “University of Arizona”</p>
+<p><em>Incorrect from ChatGPT:</em></p>
+<p><code>sql
+SELECT COUNT(DISTINCT p.id) 
+FROM paper p
+LEFT JOIN contribution c ON p.id = c.paper_id
+LEFT JOIN residence r ON c.au_id = r.au_id
+LEFT JOIN institution i ON r.inst_id = i.id
+WHERE i.name IS NULL OR i.name != 'University of Arizona';</code></p>
+<p>This will get all the papers that have anyone unaffiliated with the UofA, rather than everyone unaffiliated.</p>
+<p>After another prompt reminding it of its goal</p>
+<p><em>Correct from ChatGPT:</em></p>
+<p><code>sql
+SELECT COUNT(*)
+FROM paper
+WHERE id NOT IN (
+    SELECT DISTINCT paper_id
+    FROM contribution
+    JOIN residence ON contribution.au_id = residence.au_id
+    JOIN institution ON residence.inst_id = institution.id
+    WHERE institution.name = 'University of Arizona'
+);</code></p>
+<p>It’s weird that the answer is 27 (you can verify by manually looking through the db) as the whole point of this query is to find papers affiliated with the U of A. Looking into it, the issue is with the database creation and not adding all of an author's affiliations, the query works correctly. I’ll patch this but at least for the DB file above, this makes for a good exercise. </p>
+</li>
+</ul>
+<p><a href="mailto:support@openalex.org">support@openalex.org</a></p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
