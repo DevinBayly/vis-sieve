@@ -6,6 +6,7 @@ sql:
     institution: ./data/institution.csv
     figure: ./data/figure.csv
     pub: ./data/pub_scratch.db
+    recentpub: ./data/publications_ua.db
 
 ---
 
@@ -80,4 +81,12 @@ SELECT * FROM pub.institution LIMIT 10
 
 ```sql
 SELECT * FROM pub.paper LIMIT 10
+```
+
+```sql
+SELECT * from recentpub.paper LIMIT 10
+```
+
+```sql
+SELECT COUNT(*) from recentpub.paper
 ```

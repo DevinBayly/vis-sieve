@@ -8,6 +8,8 @@ then generates a json file with the publications of the school
 for that period
 """
 
+from database.create_database import create
+from pathlib import Path
 import os
 import requests as rq
 import json
@@ -204,6 +206,7 @@ def populate_database(database_file: str, ror: str, years: range, content_root: 
             pub_title = pub["title"][:200].replace("'", "")
             pub_doi = pub["doi"]
             pub_oa_url = pub["open_access"]["oa_url"]
+            pub_inst_id = inst_id
             pub_oa_status = pub["open_access"]["oa_status"]
             # this section is checking for whether the table has the paper in it already
             con.execute(f"SELECT COUNT(1) FROM paper WHERE id = {pub_id};")
@@ -234,6 +237,7 @@ def populate_database(database_file: str, ror: str, years: range, content_root: 
                         pass
                     
                     for author_inst in a["institutions"]:
+                        # Making another change from Ben's code
                         add_institution_to_db(con, institution_id=int(author_inst["id"].split("I")[-1]))
                         try:
                             con.execute(f"INSERT INTO residence VALUES ({a['author']['id'].split('A')[-1]}, {author_inst['id'].split('I')[-1]});")
@@ -256,7 +260,14 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
     if args.database:
-        asyncio.run(populate_database(args.database, args.ror, range(int(args.first_year), int(args.last_year)+1), args.content_root, args.output, args.silent))
+        # note that the year range is inclusive, if we decide that's confusing, we can drop the +1s
+        # like in the case that someone only wants to run on a single year, then we should have the optional line that makes last year == first +1
+        # check for the existence of the database file, if not create it
+        db_file = Path(args.database)
+        if not db_file.exists():
+            print("creating" , db_file)
+            create(db_file)
+        populate_database(args.database, args.ror, range(int(args.first_year), int(args.last_year)+1), args.content_root, args.output, args.silent)
     else:
         get_publications(args.ror, range(int(args.first_year), int(args.last_year)+1), args.output, args.silent, args.get_authors)
     
