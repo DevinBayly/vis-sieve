@@ -71,9 +71,9 @@ async def main():
         pub_folder = Path(f"{content_root_path}/{pub_id}")
         pub_folder.mkdir(exist_ok=True)
         pdf_path = Path(f"{pub_folder}/{pub_id}.pdf")
-        pub_oa_url = con.sql(f"SELECT * from paper where paper.id = {pub_id}")
+        pub_oa_url = con.sql(f"SELECT * from paper where paper.id = {pub_id}").df().oa_url
         print(pub_oa_url)
-        pdf_grab_result = await grab_pdf(pub_oa_url, pdf_path, playwright)
+        #pdf_grab_result = await grab_pdf(pub_oa_url, pdf_path, playwright)
         # now perform the duckdb updates
 if __name__ == '__main__':
     asyncio.run(main())
