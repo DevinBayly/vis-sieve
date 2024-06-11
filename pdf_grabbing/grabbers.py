@@ -52,8 +52,7 @@ def get_figures(pdf_dir_path, output_dir):
             os.makedirs(sub_out_dir)
         
         strip_figures(pdf_path, sub_out_dir+'/')
-
-if __name__ == '__main__':
+async def main():
     # use argparse to get information about the pdf we are gathering 
     # just a work id, and a publications.db file should be enough
     parser = argparse.ArgumentParser()
@@ -73,7 +72,8 @@ if __name__ == '__main__':
         pub_oa_url = con.sql(f"SELECT * from paper where paper.id = {pub_id}")
         pdf_grab_result = await grab_pdf(pub_oa_url, pdf_path, playwright)
         # now perform the duckdb updates
-
+if __name__ == '__main__':
+    asyncio.run(main())
 
 
     # create a playwright instance
