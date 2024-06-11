@@ -71,7 +71,8 @@ async def main():
         pub_folder = Path(f"{content_root_path}/{pub_id}")
         pub_folder.mkdir(exist_ok=True)
         pdf_path = Path(f"{pub_folder}/{pub_id}.pdf")
-        pub_oa_url = con.sql(f"SELECT * from paper where paper.id = {pub_id}").df().oa_url
+        # grab the url from the correct index
+        pub_oa_url = con.sql(f"SELECT * from paper where paper.id = {pub_id}").fetchall()[4]
         print(pub_oa_url)
         #pdf_grab_result = await grab_pdf(pub_oa_url, pdf_path, playwright)
         # now perform the duckdb updates
