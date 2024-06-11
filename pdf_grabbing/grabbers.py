@@ -36,11 +36,12 @@ async def grab_pdf(oa_url, destination, playwright) -> bool:
         return False
         
 def strip_figures(pdf_path, output_dir):
-    os.system('pdfimages -j ' + pdf_path + ' ' + output_dir)
-    os.system('cd ' + output_dir + ' && rm ./*.ppm -f && rm ./*.pbm -f')
+    os.system('pdfimages ' + pdf_path + ' ' + output_dir)
+    #os.system('cd ' + output_dir + ' && rm ./*.ppm -f && rm ./*.pbm -f')
     return
 
 def get_figures(pdf_dir_path, output_dir):
+    #TODO replace the os.path stuff with Path
     for subfolder in os.listdir(pdf_dir_path)[:500]:
         subfolder_path = os.path.join(pdf_dir_path, subfolder)
         pdf_path = os.path.join(subfolder_path, os.listdir(subfolder_path)[0])
