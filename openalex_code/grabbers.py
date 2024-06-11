@@ -1,5 +1,10 @@
 import sys
 import os
+import duckdb
+import argparse
+from pathlib import Path
+from playwright.async_api import Playwright, async_playwright, expect
+import asyncio
 
 async def grab_pdf(oa_url, destination, playwright) -> bool:
     browser = await playwright.chromium.launch_persistent_context(
