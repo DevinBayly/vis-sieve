@@ -27,7 +27,7 @@ async def grab_pdf(oa_url, destination, playwright) -> bool:
                 print(await download.path())
                 # Save downloaded file somewhere
                 await download.save_as(
-                    destination
+                    str(destination)
                 )
                 # await download.save_as(os.path.join(downloads_path, file_name))
             await page.wait_for_timeout(200)
@@ -53,4 +53,27 @@ def get_figures(pdf_dir_path, output_dir):
         strip_figures(pdf_path, sub_out_dir+'/')
 
 if __name__ == '__main__':
-    get_figures(sys.argv[1], sys.argv[2])
+    # use argparse to get information about the pdf we are gathering 
+    # just a work id, and a publications.db file should be enough
+    parser = argparse.ArgumentParser()
+    parser.add_argument("pub_id")
+    parser.add_argument("database")
+    args = parser.parse_args()
+    db_path = Path(args.database)
+    con = duckdb.connection(str(db_path))
+    id = int(args.pub_id)
+    # make the content parent folder
+    content_root_path = Path("content")
+    content_root_path.mkdir(exist_ok=True)
+    async with async_playwright() as playwright:
+        pub_folder = Path(f"{content_root_path}/{pub_id}")
+        pub_folder.mkdir(exist_ok=True)
+        pdf_path = Path(f"{pub_folder}/{pub_id}.pdf")
+        pdf_grab_result = await grab_pdf(pub_oa_url, pdf_path, playwright)
+        # now perform the duckdb updates
+
+
+
+    # create a playwright instance
+    # run the get_pdf system
+    #get_figures(sys.argv[1], sys.argv[2])
