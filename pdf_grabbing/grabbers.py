@@ -31,8 +31,10 @@ async def grab_pdf(oa_url, destination, playwright) -> bool:
                 )
                 # await download.save_as(os.path.join(downloads_path, file_name))
             await page.wait_for_timeout(200)
+            await browser.close()
             return True
     except Exception as e:
+        await browser.close()
         return False
         
 def strip_figures(pdf_path, output_dir):
