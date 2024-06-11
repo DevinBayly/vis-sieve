@@ -60,7 +60,7 @@ async def main():
     parser.add_argument("database")
     args = parser.parse_args()
     db_path = Path(args.database)
-    con = duckdb.connection(str(db_path))
+    con = duckdb.connect(str(db_path))
     id = int(args.pub_id)
     # make the content parent folder
     content_root_path = Path("content")
