@@ -58,23 +58,31 @@ async def main():
     # use argparse to get information about the pdf we are gathering 
     # just a work id, and a publications.db file should be enough
     parser = argparse.ArgumentParser()
-    parser.add_argument("pub_id")
+
+    parser.add_argument("row_start")
+    parser.add_argument("row_end")
     parser.add_argument("database")
     args = parser.parse_args()
     db_path = Path(args.database)
-    con = duckdb.connect(str(db_path))
-    pub_id = int(args.pub_id)
+    con = duckdb.connect(str(db_path),read_only=True)
     # make the content parent folder
     content_root_path = Path("content")
     content_root_path.mkdir(exist_ok=True)
+    offset = int(args.row_start)
+    num_rows = int(args.row_end) - offset
+    print("grabber initialized, using rows",num_rows,offset)
     async with async_playwright() as playwright:
-        pub_folder = Path(f"{content_root_path}/{pub_id}")
-        pub_folder.mkdir(exist_ok=True)
-        pdf_path = Path(f"{pub_folder}/{pub_id}.pdf")
-        # grab the url from the correct index
-        pub_oa_url = con.sql(f"SELECT * from paper where paper.id = {pub_id}").fetchall()[4]
-        print(pub_oa_url)
-        #pdf_grab_result = await grab_pdf(pub_oa_url, pdf_path, playwright)
+        papers = con.sql(f"SELECT * from paper LIMIT {num_rows} OFFSET {offset}").fetchall()
+        for paper in papers:
+          pub_id = paper[0]
+          pub_folder = Path(f"{content_root_path}/{pub_id}")
+          pub_folder.mkdir(exist_ok=True)
+          pdf_path = Path(f"{pub_folder}/{pub_id}.pdf")
+          # grab the url from the correct index
+          print(paper)
+          pub_oa_url = paper[4]
+          print(pub_oa_url)
+          pdf_grab_result = await grab_pdf(pub_oa_url, pdf_path, playwright)
         # now perform the duckdb updates
 if __name__ == '__main__':
     asyncio.run(main())
