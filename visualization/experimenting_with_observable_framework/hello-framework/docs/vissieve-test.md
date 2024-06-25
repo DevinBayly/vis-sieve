@@ -7,6 +7,7 @@ sql:
     figure: ./data/figure.csv
     pub: ./data/pub_scratch.db
     recentpub: ./data/publications_ua.db
+    princetonpub: ./data/publications_princeton.db
 
 ---
 
@@ -89,4 +90,38 @@ SELECT * from recentpub.paper LIMIT 10
 
 ```sql
 SELECT COUNT(*) from recentpub.paper
+```
+
+
+Also beneath here is the actual listing of the number of figures that we have from the 2022 parsing of the pdfs from princeton
+```sql
+SELECT COUNT(*) from princetonpub.figure
+```
+These are all up in cyverse publically available
+```sql id=figure_urls
+SELECT server_path as url from princetonpub.figure LIMIT 40
+```
+
+```js
+Inputs.table(figure_urls)
+```
+
+Following in the footsteps of the image scatter plot from here https://observablehq.com/@observablehq/plot-image-scatterplot
+
+```js
+Plot.plot({
+  inset:40,
+  y: {axis:null},
+  x:{axis:null},
+  width:800,
+  marks: [
+    Plot.image(figure_urls, {
+      x: (d,i)=> i%8,
+      y: (d,i) => Math.floor(i/8),
+      src: "url",
+      width: 80,
+    })
+  ]
+})
+
 ```
