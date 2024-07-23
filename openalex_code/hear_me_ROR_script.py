@@ -193,7 +193,7 @@ def populate_database(database_file: str, ror: str, years: range, content_root: 
     for year in years:
         if not silent:
             print(f"Getting publications for {year}, database version")
-        publications = results_per_year(year, ror, silent,testing=True)
+        publications = results_per_year(year, ror, silent,testing=False)
         print("processing publications")
         for pub in tqdm(publications):
 
@@ -203,7 +203,11 @@ def populate_database(database_file: str, ror: str, years: range, content_root: 
             
             pub_date = pub["publication_date"]
             pub_id = int(pub["id"].split("W")[-1])
-            pub_title = pub["title"][:200].replace("'", "")
+            title = pub["title"]
+            if not title:
+              print("title is none ",pub)
+              continue
+            pub_title = title[:200].replace("'", "")
             pub_doi = pub["doi"]
             pub_oa_url = pub["open_access"]["oa_url"]
             pub_inst_id = inst_id
